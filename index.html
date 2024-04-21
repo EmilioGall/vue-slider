@@ -54,23 +54,23 @@
               <!-- Carousel Display -->
               <div class="my-carousel-images" >
 
-                <!-- immagine 1 -->
+                <!-- Showed Title -->
                 <div class="my-carousel-item active" carousel-item="1">
 
-                  <img class="img-fluid" :src="titles[activeIndex].image" :alt="titles[activeIndex].title" />
+                  <img class="img-fluid" :src="gamesTitles[activeIndex].image" :alt="gamesTitles[activeIndex].title" />
 
                   <div class="item-description px-3">
 
-                    <h2> {{ titles[activeIndex].title }} </h2>
+                    <h2> {{ gamesTitles[activeIndex].title }} </h2>
 
                     <p>
-                      {{titles[activeIndex].text}}
+                      {{ gamesTitles[activeIndex].text }}
                     </p>
 
                   </div>
 
                 </div>
-                <!-- /immagine 1 -->
+                <!-- /Showed Title -->
   
               </div>
               <!-- /Carousel Display -->
@@ -79,23 +79,25 @@
               <div class="my-thumbnails position-relative">
 
                 <!-- Previous Button -->
-                <div class="my-previous position-absolute">
+                <div @click="active === 0 ? active = 4 : active--, goBackward()" class="my-previous position-absolute">
                   <span class="my-prev-hook"></span>
                 </div>
                 <!-- /Previous Button -->
 
                 <!-- Next Button -->
-                <div class="my-next position-absolute">
+                <div  @click="active === 4 ? active = 0 : active++, goForward()" class="my-next position-absolute">
                   <span class="my-next-hook"></span>
                 </div>
                 <!-- Next Button -->
 
-                <!-- immagini interne -->
-                <img class="img-fluid my-thumbnail active" src="./img/01.webp"
-                  alt="Thumbnail of Marvel's Spiderman Miles Morale picture" />
-                <img class="img-fluid my-thumbnail" src="./img/02.webp"
-                  alt="Thumbnail of Ratchet & Clank: Rift Apart picture" />
-                <!-- etc ... -->
+                <!-- Thumbnail -->
+                <img class="img-fluid my-thumbnail" 
+                v-for="( curTitle, i ) in gamesTitles" 
+                :class="{'active': activeIndex === i}" 
+                :src="curTitle.image" 
+                :alt="curTitle.title" 
+                @click="activeIndex = i"/>
+                <!-- /Thumbnail -->
 
               </div>
               <!-- /Thumbnail Display -->

@@ -8,9 +8,9 @@ createApp({
 
       activeIndex: 0,
 
-      loop: null,
 
-      titles: [
+
+      gamesTitles: [
         {
           image: "img/01.webp",
           title: "Marvel's Spiderman Miles Morale",
@@ -38,19 +38,22 @@ createApp({
         },
       ],
 
-
     };
 
   },
 
   created() {
 
-    this.loop = setInterval(() => { this.activeIndex === this.titles.length-1 ? this.activeIndex = 0 : this.activeIndex++},
-    3000);
+    this.forward = setInterval(() => {
+
+      this.activeIndex < this.gamesTitles.length-1 ? this.activeIndex++ : this.activeIndex = 0
+
+    }, 3000);
     
   },
 
   methods: {
+
 
 
 
