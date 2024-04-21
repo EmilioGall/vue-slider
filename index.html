@@ -79,13 +79,13 @@
               <div class="my-thumbnails position-relative">
 
                 <!-- Previous Button -->
-                <div @click="activeIndex === 0 ? activeIndex = 4 : activeIndex--, goBackward()" class="my-previous position-absolute">
+                <div @click="activeIndex === 0 ? activeIndex = 4 : goBackward()" class="my-previous position-absolute">
                   <span class="my-prev-hook"></span>
                 </div>
                 <!-- /Previous Button -->
 
                 <!-- Next Button -->
-                <div  @click="activeIndex === 4 ? activeIndex = 0 : activeIndex++, goForward()" class="my-next position-absolute">
+                <div  @click="activeIndex >= (gamesTitles.length-1) ? activeIndex = 0 : goForward()" class="my-next position-absolute">
                   <span class="my-next-hook"></span>
                 </div>
                 <!-- Next Button -->
@@ -110,11 +110,11 @@
           <!-- Slide Control Buttons Section -->
           <div class="col-12 p-3" id="my-after-carousel">
 
-            <button id="my-order-button" class="btn btn-primary">
+            <button @click="this.goingForward = !this.goingForward" id="my-order-button" class="btn btn-primary">
               Inverti l'ordine di scorrimento
             </button>
 
-            <button id="my-stop-button" class="btn btn-primary">
+            <button @click="this.going = !this.going" id="my-stop-button" class="btn btn-primary">
               Interrompi / Fai ripartire lo scorrimento
             </button>
 
