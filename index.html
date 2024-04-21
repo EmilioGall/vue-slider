@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,7 +34,9 @@
 
 <body>
 
-  <div>
+  <div id="app">
+
+    <!-- <div> {{ test }} </div> -->
 
     <main>
 
@@ -49,38 +52,26 @@
             <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
 
               <!-- Carousel Display -->
-              <div class="my-carousel-images">
+              <div class="my-carousel-images" >
 
-                <!-- immagini -->
-                
                 <!-- immagine 1 -->
                 <div class="my-carousel-item active" carousel-item="1">
-                  <img class="img-fluid" src="./img/01.webp" alt="Marvel's Spiderman Miles Morale picture" />
+
+                  <img class="img-fluid" :src="titles[activeIndex].image" :alt="titles[activeIndex].title" />
+
                   <div class="item-description px-3">
-                    <h2>Marvel's Spiderman Miles Morale</h2>
+
+                    <h2> {{ titles[activeIndex].title }} </h2>
+
                     <p>
-                      Experience the rise of Miles Morales as the new hero
-                      masters incredible, explosive new powers to become his own
-                      Spider-Man.
+                      {{titles[activeIndex].text}}
                     </p>
+
                   </div>
+
                 </div>
                 <!-- /immagine 1 -->
   
-                <!-- immagine 2 -->
-                <div class="my-carousel-item" carousel-item="1">
-                  <img class="img-fluid" src="./img/02.webp" alt="Ratchet & Clank: Rift Apart" />
-                  <div class="item-description px-3">
-                    <h2>Ratchet & Clank: Rift Apart</h2>
-                    <p>
-                      Go dimension-hopping with Ratchet and Clank as they take
-                      on an evil emperor from another reality.
-                    </p>
-                  </div>
-                </div>
-                <!-- /immagine 2 -->
-  
-                <!-- etc .... -->
               </div>
               <!-- /Carousel Display -->
 
@@ -137,6 +128,7 @@
   </div>
 
   <script src="./js/main.js"></script>
+
 </body>
 
 </html>
