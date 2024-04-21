@@ -8,7 +8,9 @@ createApp({
 
       activeIndex: 0,
 
+      forward: null,
 
+      backward: null,
 
       gamesTitles: [
         {
@@ -54,7 +56,53 @@ createApp({
 
   methods: {
 
+    goForward: function(){
 
+      clearInterval(this.backward);
+
+      this.backward = null;
+
+      if (this.forward !== null) {
+
+        clearInterval(this.forward)
+
+        this.forward = null;
+
+      } else {
+
+        this.forward = setInterval(() => {
+
+          this.activeIndex < this.gamesTitles.length-1 ? this.activeIndex++ : this.activeIndex = 0
+    
+        }, 3000);
+
+      };
+
+    },
+
+    goBackward: function(){
+
+      clearInterval(this.forward);
+
+      this.forward = null;
+
+      if (this.backward !== null) {
+
+        clearInterval(this.backward)
+
+        this.backward = null;
+
+      } else {
+
+        this.backward = setInterval(() => {
+          
+          this.activeIndex === 0 ? this.activeIndex = this.gamesTitles.length-1 : this.activeIndex--
+          
+        }, 3000);
+
+      };
+
+    },
 
 
   },
